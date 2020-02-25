@@ -115,7 +115,7 @@ h1 {
 }
 
 h1, .heading {
-    background-color: rgb(250, 86, 36);
+    background-color: lightgrey;
     width: 100%;
     height: auto;
     padding-top: 8px;
