@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: fonetones.github.io
+Token: 5b4cb74543a2931d92b5ee547bd5360d0285347a1e974ec1dcf83d134787a19d
