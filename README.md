@@ -1,3 +1,4 @@
 # fonetones.github.io
 Github fonetones website.
-The idea is simply, many musicians can build the website together to sell their music. First, buy fonetones (FON) ERC20 brand tokens. Then, improve the website and watch the FON brand tokens appreciate in value.
+The idea is, a community will form who owns the FON token and through FON, owns 48% of the fonetones brand (abstract asset) value. The website will teach music and the community
+will decide what musicians to contract. Fonetones will do the contracting and produce the music and sell it for minimum profit.
