@@ -1,26 +1,39 @@
+/* ---------- Base (desktop look kept as before) ---------- */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 html, body {
     background-color: grey;
     margin: 0;
     padding: 0;
     text-align: center;
     font-family: Consolas, Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
 a:link {
-color: white;
+    color: white;
 }
 a:visited {
-color: white;
+    color: white;
 }
 a:hover {
-color: white;
+    color: white;
 }
 a {
-  background-color: darkgrey;
-  border-radius: 5px;
-  padding: 1px;
-  border: 1px;
-  text-decoration: none;
+    background-color: darkgrey;
+    border-radius: 5px;
+    padding: 1px;
+    border: 1px;
+    text-decoration: none;
+    overflow-wrap: anywhere;   /* long URLs and file names wrap instead of overflowing */
 }
 
 header {
@@ -31,18 +44,15 @@ header {
 }
 
 nav {
-    background:lightgrey;
+    background: lightgrey;
     color: darkgrey;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    display: inline-block; 
+    display: inline-block;
     border-radius: 10px;
     padding: 10px;
     border: 5px;
     margin-top: 0px;
-    /*
-    max-width: 500px;
-    */
 }
 
 ul {
@@ -65,54 +75,46 @@ li {
 main {
     background-color: lightgrey;
     color: black;
-    /*
-    max-width: 465px;
-    */
     text-align: center;
     display: inline-block;
+    max-width: 100%;
     border-radius: 10px;
     padding: 10px;
     border: 10px;
     margin-top: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     position: relative;
     top: 80px;
 }
 
 section {
-    float: top;
     float: left;
     background-color: white;
     color: black;
-    
     text-align: center;
     display: inline-block;
     border-radius: 10px;
     padding: 10px;
     border: 10px;
     margin-top: 10px;
-    margin-bottom: 10px; 
-    
+    margin-bottom: 10px;
     top: 80px;
     max-width: 600px;
 }
 
 aside {
-    float: top;
     float: right;
     border-radius: 10px;
     padding: 10px;
     border: 10px;
     margin-top: 10px;
-    margin-bottom: 10px; 
-    
+    margin-bottom: 10px;
     top: 80px;
-    
 }
 
 h1 {
-  font-size: 55px;
-  font-style: italic; 
+    font-size: 55px;
+    font-style: italic;
 }
 
 h1, .heading {
@@ -123,17 +125,22 @@ h1, .heading {
     padding-bottom: 5px;
 }
 
+h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+}
+
 h2 {
-  font-size: 35px;
-  font-style: italic;
+    font-size: 35px;
+    font-style: italic;
 }
 
 h3 {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 p {
-  font-size: 25px;
+    font-size: 25px;
+    overflow-wrap: break-word;
 }
 
 footer {
@@ -144,3 +151,153 @@ footer {
     top: 80px;
 }
 
+/* ---------- Media that should never exceed the screen ---------- */
+
+img, svg, video, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    max-width: 100%;      /* e.g. the GeckoTerminal chart embeds */
+}
+
+audio {
+    width: 100%;
+    max-width: 400px;
+}
+
+pre, code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Wide tables scroll sideways inside themselves instead of stretching the page */
+table {
+    border-collapse: collapse;
+    max-width: 100%;
+}
+th, td {
+    padding: 6px 8px;
+    vertical-align: top;
+    overflow-wrap: break-word;
+}
+
+/* ---------- Tablets and below ---------- */
+
+@media (max-width: 800px) {
+    h1 { font-size: 40px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 24px; }
+    p  { font-size: 20px; }
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 600px) {
+
+    /* Header no longer floats over the content, so a wrapped menu
+       can't cover the first lines of the page. */
+    header {
+        position: static;
+        width: 100%;
+    }
+
+    nav {
+        display: block;
+        width: 100%;
+        border-radius: 0;
+        padding: 6px;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    /* Menu buttons: two or three per row, big enough to tap */
+    li {
+        width: auto;
+        min-width: 90px;
+        font-size: 18px;
+        padding: 8px 12px;
+        margin: 4px;
+    }
+
+    li a {
+        padding: 6px 4px;
+    }
+
+    /* Remove the fixed-header offsets used on desktop */
+    main {
+        display: block;
+        top: 0;
+        margin: 8px;
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    section, aside {
+        float: none;
+        display: block;
+        top: 0;
+        max-width: 100%;
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    footer {
+        top: 0;
+    }
+
+    h1 {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 1.25;
+    }
+
+    h3 {
+        font-size: 18px;      /* also shrinks the ∞ ⋈ ∞ divider so it fits one line */
+        letter-spacing: 0;
+    }
+
+    /* Long text reads better left-aligned on a narrow screen */
+    p {
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    /* Keep the short single-line items (contact lines, links) centred if wanted:
+       add class="center" to a paragraph to override. */
+    p.center {
+        text-align: center;
+    }
+
+    /* Wide tables (e.g. the "Planned Steps" table) scroll sideways inside themselves */
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        font-size: 15px;
+    }
+
+    /* Make embedded charts/videos a sensible height on a phone */
+    iframe {
+        width: 100%;
+        height: 420px;
+    }
+}
+
+/* ---------- Very small phones ---------- */
+
+@media (max-width: 380px) {
+    h1 { font-size: 24px; }
+    h2 { font-size: 21px; }
+    p  { font-size: 17px; }
+    li { min-width: 80px; font-size: 16px; padding: 8px 8px; }
+}
